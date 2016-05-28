@@ -1,0 +1,28 @@
+{
+    "name": "yii2-tools/yii2-base",
+    "description": "Core components for yii2-tools libraries",
+    "keywords": [
+        "yii2",
+        "yii2-tools",
+        "extension"
+    ],
+    "type": "yii2-extension",
+    "license": "MIT",
+    "homepage": "https://github.com/yii2-tools/yii2-base",
+    "authors": [
+        {
+            "name": "Pavel Petrov",
+            "email": "itnelo@gmail.com",
+            "homepage": "https://github.com/itnelo",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "~2.0.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "yii\\tools\\": ""
+        }
+    }
+}
