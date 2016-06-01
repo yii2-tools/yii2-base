@@ -14,7 +14,7 @@ use yii\helpers\VarDumper;
 use yii\base\InvalidConfigException;
 use yii\base\Action as BaseAction;
 use yii\web\NotFoundHttpException;
-use yii\db\ActiveQuery;
+use yii\db\ActiveQuery as BaseActiveQuery;
 use yii\data\Pagination;
 
 /**
@@ -357,11 +357,11 @@ class Action extends BaseAction
 
     /**
      * @param string|array $condition
-     * @return ActiveQuery
+     * @return BaseActiveQuery
      */
     protected function buildActiveQuery($condition)
     {
-        /** @var ActiveQuery $query */
+        /** @var BaseActiveQuery $query */
         $query = $this->model->find()->andWhere($condition);
 
         if ($this->pagination instanceof Pagination) {
