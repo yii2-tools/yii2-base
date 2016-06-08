@@ -25,6 +25,18 @@ class HtmlPurifierBehavior extends AttributeBehavior
     public $htmlAttribute = 'content';
 
     /**
+     * @var array default config for Formatter's asHtml method
+     */
+    public $defaultConfig = [
+        'HTML.SafeObject' => true,
+        'Output.FlashCompat' => true,
+        'HTML.SafeEmbed' => true,
+        'HTML.SafeIframe' => true,
+        // allow youtube and vimeo iframes
+        'URI.SafeIframeRegexp' => '%^(https?:)?//(www\.youtube(?:-nocookie)?\.com/embed/|player\.vimeo\.com/video/)%',
+    ];
+
+    /**
      * @var array config for Formatter's asHtml method
      */
     public $config = [];
@@ -50,6 +62,9 @@ class HtmlPurifierBehavior extends AttributeBehavior
      */
     protected function getValue($event)
     {
-        return Yii::$app->getFormatter()->asHtml($this->owner->{$this->htmlAttribute});
+        return Yii::$app->getFormatter()->asHtml(
+            $this->owner->{$this->htmlAttribute},
+            array_merge($this->defaultConfig, $this->config)
+        );
     }
 }
